@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue5and6</title>
+</head>
+<body>
+<div id="root">
+    <ul>
+        <li v-for="grocery in groceries" v-text="grocery"></li>
+    </ul>
+
+    <input id="input" type="text" v-model="newGrocery">
+
+    <button v-if="newGrocery.length > 0" v-on:click="addGrocery">Add a grocery</button>
+
+    <p><button v-on:click="random">Random grocery</button></p>
+    <p v-text="message"></p>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+            newGrocery: '',
+            groceries: ['Banana', 'Rice', 'Tomato'],
+            message: ''
+        },
+
+        methods: {
+            addGrocery(){
+                this.groceries.push(this.newGrocery)
+            },
+            random(){
+                let randLi	=	Math.floor(Math.random()*this.groceries.length);
+                this.message = this.groceries[randLi]
+            }
+        }
+    })
+</script>
+</body>
+</html>

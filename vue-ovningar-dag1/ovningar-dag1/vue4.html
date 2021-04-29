@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id ="app">
+    <p>{{message}}</p>
+    <label>Convert Celcius to fahrenheit</label>
+    <input v-model="cel">
+    <button v-on:click="convert">Convert</button>
+</div>
+
+<script src="http://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Welcome',
+            cel: '',
+            fah:''
+        },
+        methods: {
+            convert: function (){
+                this.fah = this.cel * 9/5+32;
+
+                this.message = this.cel + 'C is ' + this.fah + 'F';
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
